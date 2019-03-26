@@ -1,0 +1,364 @@
+{% extends "teacher/base.html" %}
+{% load static %}
+{% block title %} Quản lý lớp {{lop_ht.ten}} {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+    <!-- bootstrap-wysiwyg -->
+    
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+
+    <div class="">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+            <div class="x_title">
+                <h2>Lớp {{lop_ht.ten}}</h2>
+                <!--<small> {{lop_ht.khoa_id.ten_khoa}} - {{lop_ht.nien_khoa_id.ten_nien_khoa}} -  {{lop_ht.nien_khoa_id.nam_hoc}}</small>-->
+                <button style="float:right;" class="btn btn-success" id="btn_send" data-toggle="modal" data-target="#send" name="tất cả">Giao bài tập cả lớp <i class="fa fa-send"></i></button>
+                <button class="btn btn-info" style="float:right;" id="tao_ky_thi" data-toggle="modal" data-target="#ky_thi" >Tạo kỳ thi <i class="fa fa-edit"></i> </button>
+                <button class="btn btn-primary" style="float:right;" id="share" >Trình chiếu <i class="fa fa-video-camera"></i> </button>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Trao đổi</a>
+                  </li>
+                  <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Nhóm</a>
+                  </li>
+                  
+                  
+                  <li><button style="display:none;" class="btn btn-primary" id="btn_random_group" >Tạo nhóm Random</button>
+                  </li>
+                  <li><button style="display:none;" class="btn btn-primary" id="btn_manual_group">Tạo nhóm theo thứ tự</button>
+                  </li>
+
+                  <li><button style="display:none;" class="btn btn-primary" id="btn_audiocall">Thiết lập cuộc gọi nhóm</button>
+                  </li>
+
+                  <li><p id="demo"></p>
+                  </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                    <div class="x_content">
+                      <div class="row">
+                        <div class="col-sm-3 mail_list_column" style="overflow-y: scroll; height:600px;">
+                          {% for student in ls_student %}
+                          {% comment %} <a href="javascript:register_popup_teacher('{{student.username}}', '{{student.fullname}}');"> {% endcomment %}
+                            <div class="mail_list chat__{{student.username}}" data-fullname="{{student.fullname}}">
+                              <!-- <div class="left">
+                              </div> -->
+                              <p hidden>{{student.username}}</p>
+                              <div class="right">
+                                <h3>{{ student.fullname }}
+                                    <small style="display:none;" id="inbox{{student.username}}" class="giotay_std inboxx">
+                                      <i class="fa fa-envelope" style="font-size: 20px;color:red"></i>
+                                    </small>
+                                    <small style="display:none;" id="giotayxxx{{student.username}}" class="giotay_std">
+                                      <i class="fa fa-hand-paper-o" style="font-size: 20px;color:red"></i>
+                                    </small>
+                                    <small style="display:none;" id="bogiotayxxx{{student.username}}" class="bogiotay_std">
+                                      <i class="fa fa-volume-up" style="font-size: 20px;color:green"></i>
+                                    </small>
+                                  {%if student.online == True%}
+                                    <small id="online" style="background: rgb(66, 183, 42);border-radius: 50%;display: inline-block;height: 6px;margin-left: 4px;width: 6px;"></small>
+                                  {% endif %}
+                                  </h3>
+                                {% if student.gioi_tinh == 1%}
+                                  <p><b>Giới tính:</b> Nam</p>
+                                {% else%}
+                                  <p><b>Giới tính:</b> Nữ</p>
+                                {% endif%}
+                                <p><b>Email:</b> {{student.email}}</p>
+                              </div>
+                            </div>
+                          {% comment %} </a> {% endcomment %}
+                          {% endfor %}
+
+                        </div>
+                        <div class="col-sm-9 mail_view">
+                          <div class="inbox-body">
+                            <div class="frame">
+                              <ul>
+                                
+                              </ul>
+                              <div>
+                                <div class="msj-rta macro">
+                                  <div class="text text-r" style="background:whitesmoke !important; width: 95% !important;">
+                                    <input id="chat-message-input41" class="mytext" placeholder="Nhập tin nhắn"></div>
+                                    <i class="fa fa-file" style="
+                                          font-size: 26px;
+                                          padding-top: 8px;
+                                          padding-left: 77px;
+                                          float: right;
+                                      "></i>
+                                </div>
+                                <div style="padding:10px; margin-right: 24px;">
+                                  <span id="chat-message-submit41" class="glyphicon glyphicon-share-alt xxx"></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                      {% comment %} <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 20px;
+                      margin-top: 20px;">
+                        <button type="button" class="btn btn-primary">Tạo nhóm theo thứ tự</button>
+                        <button type="button" class="btn btn-primary" id="btn_random_group">Tạo nhóm Random</button>
+                      </div> {% endcomment %}
+                      <div class="x_content">
+                        <div class="row">
+                          <div class="col-sm-3 mail_list_column list_group_all" style="overflow-y: scroll; height:600px;">
+                            
+                          </div>
+                          <div class="col-sm-9 mail_view">
+                            <div class="inbox-body">
+                              <div>
+                                <h4 id="title-chat"></h4>
+                              </div>
+                              <div class="frame2">
+                                <ul>
+                                  
+                                </ul>
+                                <div>
+                                  <div class="msj-rta macro">
+                                    <div class="text text-r" style="background:whitesmoke !important; width: 95% !important;">
+                                      <input disabled id="chat-group-text" class="mytext2" placeholder="Nhập tin nhắn"></div>
+                                      <i class="fa fa-file" style="
+                                            font-size: 26px;
+                                            padding-top: 8px;
+                                            padding-left: 77px;
+                                            float: right;
+                                        "></i>
+                                  </div>
+                                  <div style="padding:10px; margin-right: 24px;">
+                                    <span id="chat-message-submit41" class="glyphicon glyphicon-share-alt zzz"></span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+  
+                          </div>
+  
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <p hidden id="lopht">{{lop_ht.ten}}</p>
+    <div class="modal" id="ky_thi" role="dialog">
+      <div  class="modal-dialog  modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Tạo kỳ thi</h4>
+            </div>
+            <div class="modal-body">
+                <label>Chọn đề thi</label>
+                <input class="form-control" list="de_thi" name="de_thi">
+                <datalist id="de_thi">
+                    {% for de in ds_de %}
+                        <option data-id="{{de.id}}" data-thoi_gian="{{de.thoi_gian}}">{{de.ten}}: {{de.dung_lam}} - {{ de.thoi_gian}} phút</option>
+                    {% endfor %}
+                </datalist>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="phat_de">Phát đề</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="chinhsua" role="dialog">
+      <div  class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="teacher_title">Thay đổi thông tin nhóm</h4>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Thành viên</label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                      <input type="text" class="form-control" value="{{ user.fullname }}" name="fullname">
+                    </div>
+                  </div>
+                  
+               
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="save_change_group">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="modal" id="group_random" role="dialog">
+      <div  class="modal-dialog" style="width:250px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="teacher_title">Tạo nhóm ngẫu nhiên</h4>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Số thành viên 1 nhóm</label><br>
+                      <input class="form-control" type="number" name="number_mem" min="1" max="4" value="2" required>
+                  </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="save_create_group">Tạo</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" id="close_modal_create">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="group_manual" role="dialog">
+      <div class="modal-dialog" style="width:335px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="teacher_title">Tạo nhóm</h4>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label><b>Tên nhóm</b></label><br>
+                    <input style="width: 300px;" class="form-control" type="text" placeholder="Nhập tên nhóm" name="groupname" required><br>
+                    <font id="nameerr" color="red"></font><br>
+
+                    <label for="agent"><b>Chọn các thành viên</b></label><br>
+                        <input style="min-width: 300px;" class="form-control" type="text" id="search_std" name="search" placeholder="Nhập tên thành viên">
+                      <br>
+                    <div>
+                        <ol id="list_std">
+                        </ol> 
+                    </div>
+                  </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="save_create_group_manual">Tạo</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" id="close_modal_create_manual">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="audiocall" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="teacher_title">Thiết lập cuộc gọi nhóm</h4>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label><b>Thời gian cuộc gọi</b></label><br>
+                    <input type="number" name="call_time" min="1" max="100" value="1" required> Phút
+                    <font id="nameerr" color="red"></font><br>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="save_audiocall">Tạo</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal" id="close_modal_audiocall">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="send" role="dialog">
+      <div  class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="send_title"></h4>
+            </div>
+            <div class="modal-body">
+                <label>Chọn bài tập</label>
+                <input class="form-control" list="ds_bai_tap" name="bai_tap">
+                <datalist id="ds_bai_tap">
+                    {% for de in ds_bai_tap %}
+                        <option data-id="{{de.id}}" data-thoi_gian="{{de.thoi_gian}}">{{de.ten}}: {{de.dung_lam}} - {{ de.thoi_gian}} phút</option>
+                    {% endfor %}
+                </datalist>
+                <input hidden name="gr_name">
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="send_bai_tap">Giao</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'js/teacher/peerjs/jquery.js' %}"></script>
+
+    <!-- For RTC-->
+    <script src="{% static 'js/teacher/RTC/videocall/menu.js' %}"></script>
+    <script src="{% static 'js/peer/RTCMultiConnection.min.js' %}"></script>
+    <script src="{% static 'js/teacher/RTC/videocall/adapter.js' %}"></script>
+    <script src="https://192.168.200.4:443/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="{% static 'js/teacher/RTC/videocall/getHTMLMediaElement.css' %}">
+    <script src="{% static 'js/teacher/RTC/videocall/getHTMLMediaElement.js' %}"></script>
+    <script src="{% static 'js/teacher/RTC/videocall/FileBufferReader.js' %}"></script>
+    <script src="{% static 'js/teacher/RTC/RTC.js' %}"></script>
+
+    <!-- for Peerjs-->
+    <script src="{% static 'js/teacher/peerjs/main.js' %}"></script>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+<script>
+    $("#share").click(function(){
+        var link = '{{lop_ht.ten}}'+'_'+'{{lop_ht.khoa_id.id}}'+'_'+'{{lop_ht.nien_khoa_id.id}}'+'_'+'{{user.id}}';
+        document.location.href = '/share_'+ window.btoa(link);
+    });
+</script>
+  <script src="{% static 'js/teacher/manage_class.js' %}"></script>
+  <script src="{% static 'js/teacher/peerjs/peer.js' %}"></script>
+  
+
+  <script src="{% static 'js/jquery.easy-autocomplete.js' %}"></script>
+  <script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>
+
+  <!-- CSS file -->
+  <link href="{% static 'css/easy-autocomplete.css' %}" rel="stylesheet">
+  <link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/easy-autocomplete.themes.css' %}" rel="stylesheet">
+  <link href="{% static 'css/easy-autocomplete.themes.min.css' %}" rel="stylesheet">
+
+{% endblock javascripts %}

@@ -1,0 +1,193 @@
+{% extends "adminsc/base.html" %}
+{% load staticfiles %}
+{% block content %}
+    {% if user.is_authenticated %}
+  <div class="right_col" role="main" id="main">
+    <div class=""  id="main_con">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+                <h2>Thông tin cá nhân</h2>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+                <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="{% static 'image/huong.png' %}" class="rounded-circle" width="150" />
+                                    <h4 class="card-title m-t-10">{{ user.fullname}}</h4>
+                                    <h6 class="card-subtitle">{{ user.truong_id.ten }}</h6>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Họ tên</label>
+                                        <div class="col-md-12">
+                                            <pre>{{ user.fullname }}</pre>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Giới tính</label>
+                                        <div class="col-md-12">
+                                            {% if user.gioi_tinh == 0 %}
+                                            <pre>Nữ</pre>
+                                              {% else %}
+                                            <pre>Nam</pre>
+                                              {% endif %}
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Tên đăng nhập</label>
+                                        <div class="col-md-12">
+                                            <pre>{{ user.username }}</pre>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <pre>{{ user.email }}</pre>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success btn-round" data-toggle="modal" data-target="#profile">Thay đổi thông tin</button>
+                                            <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#pass">Thay đổi mật khẩu</button>
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="modal" id="profile" role="dialog">
+      <div  class="modal-dialog">
+          <form method="post">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="teacher_title">Thay đổi thông tin</h4>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Họ tên</label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                      <input type="text" class="form-control" value="{{ user.fullname }}" name="fullname">
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Email</label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                      <input type="text" class="form-control" value="{{ user.email }}" name="email">
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-2 col-sm-2 col-xs-12">Giới tính</label>
+                  <div class="col-md-10 col-sm-10  col-xs-12">
+                      {% if user.gioi_tinh == 0 %}
+                    <label class="radio-inline"><input type="radio" name="nam" class="gioi_tinh" style="transform: scale(1.2);" > Nam</label>
+                    <label class="radio-inline"><input type="radio" name="nu" class="gioi_tinh" style="transform: scale(1.2);" checked> Nữ</label>
+                      {% else %}
+                    <label class="radio-inline"><input type="radio" name="nam" class="gioi_tinh" style="transform: scale(1.2);" checked> Nam</label>
+                    <label class="radio-inline"><input type="radio" name="nu" class="gioi_tinh" style="transform: scale(1.2);" > Nữ</label>
+                      {% endif %}
+                  </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2 col-sm-2 col-xs-12">Mật khẩu</label>
+                    <div class="col-md-10 col-sm-10 col-xs-12">
+                      <input type="password" class="form-control" name="password">
+                    </div>
+                  </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="save_profile">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+          </form>
+      </div>
+
+    </div>
+
+<div class="modal" id="pass" role="dialog">
+  <div  class="modal-dialog">
+      <form method="post">
+          {% csrf_token %}
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Thay đổi mật khẩu</h4>
+            </div>
+            <div class="modal-body form-horizontal form-label-left">
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Mật khẩu hiện tại</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                      <input type="password" class="form-control" name="pass1" >
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Mật khẩu mới</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                      <input type="password" class="form-control" name="pass2">
+                    </div>
+                  </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Nhập lại mật khẩu</label>
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+                      <input type="password" class="form-control" name="pass3">
+                    </div>
+                  </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="submit" class="btn btn-primary"  id="save_password">Lưu</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </form>
+  </div>
+</div>
+
+{% if messages %}
+<div class="modal" id="alert" role="dialog">
+    {% for message in messages %}
+        {% if message.tags == 'warning' %}
+        <div class="alert alert-danger">{{ message }}</div>
+        {% else %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+
+    {% endif %}
+{% endblock content %}
+        
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{% static 'js/adminsc/profile.js' %}"></script>
+{% endblock javascripts %}

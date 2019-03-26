@@ -1,0 +1,44 @@
+{% extends "student/base.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+    {{ block.super }}
+    <link href="{% static 'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/easy-autocomplete.css' %}" rel="stylesheet">
+    <link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/easy-autocomplete.themes.css' %}" rel="stylesheet">
+    <link href="{% static 'css/easy-autocomplete.themes.min.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  <div class="right_col" role="main" id="main">
+    <div class=""  id="main_con">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+              <div class="x_title">
+                  <h2>Quản lý Điểm</h2>
+                <div class="clearfix"></div>
+              </div>
+
+              <div class="x_content">
+                <div class="table-responsive">
+                  
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+{% endblock content %}
+
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{% static 'js/jquery.easy-autocomplete.js' %}"></script>
+    <script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/adminsc/manage_teacher.js' %}"></script>
+{% endblock javascripts %}

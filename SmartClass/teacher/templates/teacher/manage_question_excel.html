@@ -1,0 +1,195 @@
+{% extends "teacher/base.html" %}
+{% load staticfiles %}
+{% block title %}Nhập câu hỏi excel {% endblock %}
+{% block stylesheets %}
+    {{ block.super }}
+    <!--<link href="{% static 'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">-->
+
+    <!--<link rel="stylesheet" href="{% static 'math/katex.css' %}" />-->
+    <!--<link rel="stylesheet" href="{% static 'math/monokai-sublime.min.css' %}" />-->
+    <!--<link rel="stylesheet" href="{% static 'math/quill/quill.snow.css' %}" />-->
+    <style>
+        .ques-container {
+            height: 200px;
+        }
+        .answer-container {
+            height: 50px;
+        }
+    </style>
+{% endblock stylesheets %}
+{% block content %}
+<div class="right_col" role="main">
+    <div class="">
+      <!---->
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_content">
+                {% csrf_token %}
+                <div class="" role="tabpanel" data-example-id="togglable-tabs" style="min-height: 965.99px;">
+                    <div id="myTabContent" class="tab-content">
+                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content" aria-labelledby="home-tab">
+                            <div class="x_title">
+                                <h2>Tạo câu hỏi</h2>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content" id="tab_content1">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 form-group">
+                                        <table class="mytable" style="width:100%;">
+                                            <tr class="mytable">
+                                                <td style="width:30%"><b>Môn:</b></td>
+                                                <td>
+                                                    <select class="form-control" id="mon">
+                                                        {% for mon in list_mon %}
+                                                        <option value="{{ mon.mon_id.id }}">{{ mon.mon_id.ten }} - {{mon.mon_id.lop}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <!--<table class="mytable" style="width:100%;">-->
+                                            <!--<tr class="mytable">-->
+                                                <!--<td style="width:30%"><b>Dạng câu hỏi:</b></td>-->
+                                                <!--<td>-->
+                                                    <!--<select name="dang_cau_hoi" class="form-control" id="dang_cau_hoi" >-->
+                                                        <!--<option>Trắc nhiệm</option>-->
+                                                        <!--<option>Điền từ</option>-->
+                                                        <!--<option>Tự luận</option>-->
+                                                    <!--</select>-->
+                                                <!--</td>-->
+                                            <!--</tr>-->
+                                        <!--</table>-->
+
+                                        <table class="mytable" style="width:100%;">
+                                            <tr class="mytable">
+                                                <td style="width:30%"><b>Dạng câu hỏi:</b></td>
+                                                <td>
+                                                    <select name="dang_media" id="dang_media" class="form-control">
+                                                        <option>Văn bản</option>
+                                                        <option>Hình ảnh</option>
+                                                        <option>Âm thanh</option>
+                                                        <option>Video</option>
+                                                        <option>File</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select name="dang_cau_hoi" class="form-control" id="dang_cau_hoi" >
+                                                         <option>Trắc nhiệm</option>
+                                                        <option>Điền từ</option>
+                                                        <option>Tự luận</option>
+                                                        <!--<option>Ghi âm</option>-->
+                                                        <!--<option>Ghi hình</option>-->
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <table class="mytable" style="width:100%;">
+                                            <tr class="mytable">
+                                                <td style="width:30%"><b>Loại bài:</b></td>
+                                                <td>
+                                                  <select name="dung_lam" class="form-control" id="dung_lam">
+                                                        <option>Thi</option>
+                                                        <option>Bài tập</option>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <table class="mytable" style="width:100%;">
+                                            <tr class="mytable">
+                                                <td style="width:30%"><b>Số câu hỏi:</b></td>
+                                                <td>
+                                                    <input name="so_cau_hoi" class="form-control" id="so_cau_hoi" min="1" max="10" type="number" value="1">
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <table class="mytable" style="width:100%;">
+                                            <tr class="mytable">
+                                                <td style="width:30%"><b>Số đáp án mỗi câu:</b></td>
+                                                <td>
+                                                    <input name="so_dap_an" class="form-control" id="so_dap_an" min="1" max="10" type="number" value="4">
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                        <button class="btn btn-primary" id="file_sample" style="width:30%;"><i class="fa fa-download"></i> Tải file mẫu</button>
+
+                                    </div>
+                                </div>
+                                <br>
+                                <br>
+                                <div class="row">
+                                    <table class="mytable" style="width:100%;">
+                                        <tr class="mytable">
+                                            <td width="30%"><b>File câu hỏi excel:</b></td>
+                                            <td><input type="file" id="file" class="form-control" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"></td>
+                                        </tr>
+                                        <tr class="mytable" id="attach" style="display:none;">
+                                            <td><b>File đính kèm</b></td>
+                                            <td><input type="file" id="file_attach" class="form-control" multiple></td>
+                                        </tr>
+                                    </table>
+                                    <button class="btn btn-success btn-lg btn-block" style="float:right" id="luu_cau_hoi">
+                                        <i class="fa fa-save"></i> Lưu
+                                    </button>
+                                </div>
+                                <!--<div class="row">-->
+                                    <!--<button class="btn btn-success btn-lg btn-block" style="float:right" id="luu_cau_hoi">-->
+                                        <!--<i class="fa fa-save"></i> Lưu-->
+                                    <!--</button>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal" id="processing" role="dialog">
+      <div  class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <div class="col-md-11 col-sm-12 col-xs-12">
+                    <div class="progress" >
+                        <div id="progressBar" style="width:0%" class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1 col-sm-12 col-xs-12">
+                    <button id="cancel_upload" class="btn-danger" style="border-radius:6px" data-dismiss="modal">
+                        <span class="fa fa-close"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
+{% block javascripts %}
+    {{ block.super }}
+    <!--&lt;!&ndash;<script src="{% static 'js/jquery.easy-autocomplete.js' %}"></script>&ndash;&gt;-->
+    <!--&lt;!&ndash;<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>&ndash;&gt;-->
+    <!--<script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>-->
+    <!--<script src="{% static 'vendors/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>-->
+    <!--<script src="{% static 'math/katex.min.js' %}"></script>-->
+    <!--<script src="{% static 'math/highlight.min.js' %}" ></script>-->
+    <!--<script src="{% static 'math/quill/quill.min.js' %}"></script>-->
+    <script src="{% static 'xlsx.full.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'excel/jszip.js' %}"></script>
+    <script type="text/javascript" src="{% static 'excel/FileSaver.js' %}"></script>
+    <script type="text/javascript" src="{% static 'excel/myexcel.js' %}"></script>
+    <script>
+        var e_do_kho = ["Dễ", "Trung bình", "Khó"];
+    </script>
+    <script src="{% static 'js/teacher/question_excel.js' %}"></script>
+{% endblock javascripts %}

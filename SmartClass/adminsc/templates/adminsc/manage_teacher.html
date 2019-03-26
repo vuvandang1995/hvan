@@ -1,0 +1,165 @@
+{% extends "adminsc/base.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+    {{ block.super }}
+    <link href="{% static 'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/easy-autocomplete.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet">-->
+    <link href="{% static 'css/easy-autocomplete.themes.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'css/easy-autocomplete.themes.min.css' %}" rel="stylesheet">-->
+{% endblock stylesheets %}
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Danh sách giáo viên </h2>
+                <button class="btn btn btn-round btn-primary"  style="float:right;" data-toggle="modal" data-target="#new_teacher_multi" data-title="new">
+                    <i class="fa fa-users"></i> Thêm nhiều giáo viên
+                </button>
+                <button class="btn btn-round btn-primary"  style="float:right;" data-toggle="modal" data-target="#new_teacher" data-title="new">
+                    <i class="fa fa-user-plus"></i> Thêm giáo viên
+                </button>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+
+
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table bulk_action" id="list_teacher" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Bộ môn</th>
+                        <th>Lớp phụ trách</th>
+                        <th>Tên đăng nhập</th>
+                        <th>Trạng thái</th>
+                        <th>Tùy chọn</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="modal" id="new_teacher" role="dialog">
+  <div  class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="teacher_title">Thêm mới giáo viên</h4>
+        </div>
+        <div class="modal-body">
+            {% csrf_token %}
+            <input type="hidden" name="gvid">
+            <input type="hidden" name="kieu">
+
+            <div class="col-md-12 form-group has-feedback">
+              <input type="text" class="form-control has-feedback-left" name="fullname" placeholder="Họ tên" required>
+              <span class="fa fa-font form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback">
+              <input type="text" class="form-control has-feedback-left" name="username" placeholder="Tên đăng nhập" required>
+              <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback">
+              <input type="email" class="form-control has-feedback-left" name="email" placeholder="Email" required>
+              <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback passwd" >
+              <input type="password" class="form-control has-feedback-left" name="password" placeholder="Mật khẩu" required>
+              <span class="fa fa-lock form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback passwd">
+              <input type="password" class="form-control has-feedback-left" name="password2" placeholder="Nhập lại mật khẩu" required>
+              <span class="fa fa-repeat form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback">
+                <select class="form-control has-feedback-left" id="gioi_tinh">
+                    <option data-gioi_tinh="1">Nam</option>
+                    <option data-gioi_tinh="0">Nữ</option>
+                </select>
+                <span class="fa fa-venus-mars form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback">
+                <input class="form-control  has-feedback-left" type="text" id="search_mon" name="search" placeholder="Chọn môn">
+                    <div>
+                        <ul id="list_mon">
+                        </ul>
+                    </div>
+                <span class="fa fa-book form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="col-md-12 form-group has-feedback">
+                <input class="form-control has-feedback-left" type="text" id="search_lop" name="search_lop" placeholder="Chọn lớp">
+                <div>
+                    <ul id="list_lop">
+                    </ul>
+                </div>
+                <span class="fa fa-home form-control-feedback left" aria-hidden="true"></span>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+        <div class="modal-footer">
+           <button type="button" class="btn btn-primary"  id="create_new_teacher">Tạo mới</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal" id="close_new_teacher">Đóng</button>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="modal" id="new_teacher_multi" role="dialog">
+  <div  class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Nhập dữ liệu theo mẫu dưới</h4>
+        </div>
+        <div class="modal-body">
+            <img style="border: 1px solid; border-radius: 10px;" src="{% static '/image/teacher.PNG' %}" width="100%">
+            <br>
+            <br>
+            <button class="btn btn-warning btn-block" id="file_sample"><i class="fa fa-download"></i> Tải file mẫu</button>
+            <input type="file" name="file" id="file" class="form-control" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="modal-footer">
+           <button type="button" class="btn btn-primary"  id="create_new_teacher_multi">Upload</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block javascripts %}
+    {{ block.super }}
+    <script src="{% static 'js/jquery.easy-autocomplete.js' %}"></script>
+    <script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/xlsx.full.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'excel/jszip.js' %}"></script>
+    <script type="text/javascript" src="{% static 'excel/FileSaver.js' %}"></script>
+    <script type="text/javascript" src="{% static 'excel/myexcel.js' %}"></script>
+    <script src="{% static 'js/adminsc/manage_teacher.js' %}"></script>
+{% endblock javascripts %}

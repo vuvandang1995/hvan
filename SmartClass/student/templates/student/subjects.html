@@ -1,0 +1,201 @@
+{% extends "student/base.html" %}
+{% load static %}
+{% block title %} Inbox {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+    <!-- bootstrap-wysiwyg -->
+    <link href="{% static 'css/chat.css' %}" rel="stylesheet">
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    {% csrf_token %}
+    <div class="">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Môn {{mon_ht.ten}}  </h2>
+                <button class="btn btn-primary" style="float:right;" id="share">Trình chiếu <i class="fa fa-video-camera"></i> </button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Trao đổi</a>
+                  </li>
+                  <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Nhóm</a>
+                  </li>
+                  <li>
+                    <section class="make-center">
+                      <div style="display:none;" id="videos-container111"></div>
+                    </section>
+                  </li>
+
+                  <li>
+                    <section class="make-center">
+                      <label style="cursor: pointer;display:none;"><input type="checkbox" name="broadcaster"> Are You A Broadcaster?</label>
+                      <br><br>
+                      <input style="display:none;" type="text" id="room-id" value="abcdef" autocorrect=off autocapitalize=off size=20>
+                      <button style="display:none;" id="open-broadcast" disabled>Open Broadcast</button>
+                      <button style="display:none;" id="join-broadcast">Join Broadcast</button>
+                      <button style="display:none;" id="out_gr">kết thúc</button>
+                      <button style="display:none;" id="out_gr1">kết thúc1</button>
+                    </section>
+                  </li>
+                  <li><button style="display:none;" class="btn btn-success" id="giotay" >Giơ tay</button>
+                  </li>
+                  <li><button style="display:none;" class="btn btn-danger" id="bogiotay" >Bỏ giơ tay</button>
+                  </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                  <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+                    <div class="x_content">
+                      <div class="row">
+                        <div class="col-sm-3 mail_list_column" style="overflow-y: scroll; height:600px;">
+                          <!-- <a href="javascript:register_popup('{{user.username}}', '{{teacher_ht.myuser_id.fullname}}');"> -->
+                            <div class="mail_list" id="mail_list">
+                                <p hidden>{{user.username}}</p>
+                                <div class="right">
+                                  <h3>{{ teacher_ht.myuser_id.fullname }}</h3>
+                                  <p><b>Email:</b> {{teacher_ht.myuser_id.email}}</p>
+                                  <p hidden id="teacher_name">{{ teacher_ht.myuser_id.username }}</p>
+                                  <p hidden id="teacher_fullname">{{ teacher_ht.myuser_id.fullname }}</p>
+
+                              </div>
+                            </div>
+                          <!-- </a> -->
+                          
+                        </div>
+                        <div class="col-sm-9 mail_view">
+                          <div class="inbox-body">
+                            <div class="frame">
+                              <ul>
+                                
+                              </ul>
+                              <div>
+                                <div class="msj-rta macro">
+                                  <div class="text text-r" style="background:whitesmoke !important">
+                                    <input id="chat-message-input41" class="mytext" placeholder="Type a message"></div>
+                                </div>
+                                <div style="padding:10px;">
+                                  <span id="chat-message-submit41" class="glyphicon glyphicon-share-alt xxx"></span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                    {% comment %} <div class="col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 20px;
+                      margin-top: 20px;">
+                        <button type="button" class="btn btn-primary">Tạo nhóm theo thứ tự</button>
+                        <button type="button" class="btn btn-primary" id="btn_random_group">Tạo nhóm Random</button>
+                      </div> {% endcomment %}
+                      <div class="x_content">
+                          <div class="row">
+                            <div class="col-sm-3 mail_list_column list_group_all" style="overflow-y: scroll; height:600px;">
+                                <div style="display:none;" class="mail_list" id="audiocall">
+                                  <section class="make-center">
+                                    <div id="videos-container">
+
+                                    </div>
+                                  </section>
+                                </div>
+                                <p id="demo"></p>
+                            </div>
+                            <div class="col-sm-9 mail_view">
+                              <div class="inbox-body">
+                                <div>
+                                  <h4 id="title-chat"></h4>
+                                </div>
+                                <div class="frame2">
+                                  <ul>
+                                    
+                                  </ul>
+                                  <div>
+                                    <div class="msj-rta macro">
+                                      <div class="text text-r" style="background:whitesmoke !important; width: 95% !important;">
+                                        <input disabled id="chat-group-text" class="mytext2" placeholder="Nhập tin nhắn"></div>
+                                        <i class="fa fa-file" style="
+                                              font-size: 26px;
+                                              padding-top: 8px;
+                                              padding-left: 77px;
+                                              float: right;
+                                          "></i>
+                                    </div>
+                                    <div style="padding:10px; margin-right: 24px;">
+                                      <span id="chat-message-submit41" class="glyphicon glyphicon-share-alt zzz"></span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+    
+                            </div>
+    
+                          </div>
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% comment %} <div class="modal" id="audiocall" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title" id="teacher_title">Cuộc gọi nhóm</h4>
+          </div>
+          <div class="modal-body form-horizontal form-label-left">
+              <section class="make-center">
+                <div id="videos-container"></div>
+              </section>
+              <div class="clearfix"></div>
+          </div>
+          <div class="modal-footer">
+             <button type="submit" class="btn btn-primary"  id="save_audiocall">Tạo</button>
+             <button type="button" class="btn btn-default" data-dismiss="modal" id="close_modal_audiocall">Đóng</button>
+          </div>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+
+
+  <script src="{% static 'js/teacher/peerjs/jquery.js' %}"></script>
+  <script src="{% static 'js/teacher/peerjs/peer.js' %}"></script>
+  <script src="{% static 'js/teacher/peerjs/main.js' %}"></script>
+  <!-- For RTC-->
+  <script src="{% static 'js/teacher/RTC/videocall/menu.js' %}"></script>
+  <script src="{% static 'js/peer/RTCMultiConnection.min.js' %}"></script>
+  <script src="{% static 'js/teacher/RTC/videocall/adapter.js' %}"></script>
+  <script src="https://192.168.200.4:443/socket.io/socket.io.js"></script>
+  <link rel="stylesheet" href="{% static 'js/teacher/RTC/videocall/getHTMLMediaElement.css' %}">
+  <script src="{% static 'js/teacher/RTC/videocall/getHTMLMediaElement.js' %}"></script>
+  <script src="{% static 'js/teacher/RTC/videocall/FileBufferReader.js' %}"></script>
+  <script src="{% static 'js/teacher/RTC/RTC.js' %}"></script>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+  <script>
+    var lop = {{ lop }};
+    $("#share").click(function(){
+        var link = '{{lop_ht.ten}}'+'_'+'{{lop_ht.khoa_id.id}}'+'_'+'{{lop_ht.nien_khoa_id.id}}'+'_'+'{{teacher_ht.myuser_id.id}}';
+        document.location.href = '/share_'+ window.btoa(link);
+    });
+  </script>
+  <script src="{% static 'js/student/subjects.js' %}"></script>
+{% endblock javascripts %}

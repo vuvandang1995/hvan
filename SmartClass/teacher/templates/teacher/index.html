@@ -1,0 +1,109 @@
+{% extends "teacher/base.html" %}
+{% load staticfiles %}
+{% block content %}
+		{% if user.is_authenticated %}
+    	<div class="right_col" role="main" id="main" style="min-height: 374px;">
+		    <div class="" id="main_con">
+		      <div class="row">
+		        <div class="col-md-12 col-sm-12 col-xs-12">
+		          <div class="x_panel">
+		            <div class="x_title">
+		                <h2>Quản lý lớp</h2>
+		              <div class="clearfix"></div>
+		            </div>
+		                <div class="x_content">
+		                    <div class="col-lg-12 col-xlg-12 col-md-12">
+		                           <div>
+			                           	<div class="clearfix ">
+				                           	<div class="infor">
+				                           		<h3 class="coursename">
+				                           			<a href="mycoses"> Lớp 10A1 </a>
+				                           		</h3>
+				                           	</div>
+			                           </div>
+			                           <div class="content">
+			                           		<div class="summary">
+			                           			<div class="no-overflow">
+			                           				<p>This is a blank course, ready for you to start adding students, content and activities.</p>
+			                           			</div>
+			                           		</div>
+			                           		<div class="teachers">
+			                           			<ul>
+			                           				<li>Teacher : <a href="{% url 'teacher:profile' %}">{{user.username}}</a></li>
+			                           			</ul>
+			                           		</div>
+			                           </div>
+		                           </div>
+		                           <div>
+			                           	<div class="clearfix ">
+				                           	<div class="infor">
+				                           		<h3 class="coursename">
+				                           			<a href="mycoses"> Lớp 10A2 </a>
+				                           		</h3>
+				                           	</div>
+			                           </div>
+			                           <div class="content">
+			                           		<div class="summary">
+			                           			<div class="no-overflow">
+			                           				<p>This is a blank course, ready for you to start adding students, content and activities.</p>
+			                           			</div>
+			                           		</div>
+			                           		<div class="teachers">
+			                           			<ul>
+			                           				<li>Teacher : <a href="{% url 'teacher:profile' %}">{{user.username}}</a></li>
+			                           			</ul>
+			                           		</div>
+			                           </div>
+		                           </div>
+		                    </div>
+		                    <!-- <div class="col-lg-8 col-xlg-9 col-md-7">
+		                            <div class="card">
+		                                <div class="card-body">
+		                                        <div class="form-group">
+		                                            <label class="col-md-12">Họ tên</label>
+		                                            <div class="col-md-12">
+		                                                <pre>Giáo viên A</pre>
+		                                            </div>
+		                                        </div>
+		                                        <div class="form-group">
+		                                            <label class="col-md-12">Giới tính</label>
+		                                            <div class="col-md-12">
+		                                                
+		                                                <pre>Nữ</pre>
+		                                                
+		                                            </div>
+		                                        </div>
+
+		                                        <div class="form-group">
+		                                            <label class="col-md-12">Tên đăng nhập</label>
+		                                            <div class="col-md-12">
+		                                                <pre>gva</pre>
+		                                            </div>
+		                                        </div>
+
+		                                        <div class="form-group">
+		                                            <label class="col-md-12">Email</label>
+		                                            <div class="col-md-12">
+		                                                <pre>gva@gmail.com</pre>
+		                                            </div>
+		                                        </div>
+		                                    <div class="form-group">
+		                                            <div class="col-sm-12">
+		                                                <button class="btn btn-success btn-round" data-toggle="modal" data-target="#profile">Thay đổi thông tin</button>
+		                                                <button class="btn btn-danger btn-round" data-toggle="modal" data-target="#pass">Thay đổi mật khẩu</button>
+		                                            </div>
+		                                        </div>
+		                                </div>
+		                            </div>
+		                    </div> -->
+		                </div>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+		 </div>
+		{% endif %}
+{% endblock content %}
+
+{% block js %}
+{% endblock %}

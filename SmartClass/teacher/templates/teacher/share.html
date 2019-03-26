@@ -1,0 +1,140 @@
+{% extends "teacher/base.html" %}
+{% load static %}
+{% block title %} Trình chiếu {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+    <!-- bootstrap-wysiwyg -->
+    <style>
+        * {
+            word-wrap:break-word;
+        }
+        video {
+            object-fit: fill;
+            width: 30%;
+        }
+        button,
+        input,
+        select {
+            font-weight: normal;
+            padding: 2px 4px;
+            text-decoration: none;
+            display: inline-block;
+            text-shadow: none;
+            font-size: 16px;
+            outline: none;
+        }
+        .make-center {
+            text-align: center;
+            padding: 5px 10px;
+        }
+        img, input, textarea {
+          max-width: 100%
+        }
+        @media all and (max-width: 500px) {
+            .fork-left, .fork-right, .github-stargazers {
+                display: none;
+            }
+        }
+
+        media-box {
+            height: 30px;
+            text-align: center;
+        }
+
+        media-controls {
+            display:none;
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="right_col" role="main">
+    <div class="">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="x_panel">
+            <div class="x_title" >
+                <div class="row">
+                    <div class="col-md-3">
+                        <button id="back" class="btn btn-info"><i class="fa fa-arrow-left"></i> Trở lại</button>
+                    </div>
+                    <div class="col-md-9" style="text-align:center">
+                        <button id="start-screen" class="btn btn-success"><i class="fa fa fa-play"></i> Bắt đầu</button>
+                        <button  id="stop-screen" class="btn btn-danger" style="display: none;"><i class="fa fa fa-stop"></i> Dừng</button>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <div class="row">
+                <div class="col-sm-3 mail_list_column" style="overflow-y: scroll; height:600px;">
+                  {% for student in ls_student %}
+                    <div class="mail_list" data-fullname="{{student.fullname}}">
+                      <p hidden>{{student.username}}</p>
+                      <div class="right">
+                        <h3>{{ student.fullname }}
+                            <small style="display:none;" id="giotay_{{student.username}}" class="giotay_std">
+                              <i class="fa fa-hand-paper-o" style="font-size: 20px;color:red"></i>
+                            </small>
+                          {% if student.online == True %}
+                            <small style="background: rgb(66, 183, 42);border-radius: 50%;display: inline-block;height: 6px;margin-left: 4px;width: 6px;"></small>
+                          {% endif %}
+                          </h3>
+                        {% if student.gioi_tinh == 1 %}
+                          <p><b>Giới tính:</b> Nam</p>
+                        {% else%}
+                          <p><b>Giới tính:</b> Nữ</p>
+                        {% endif%}
+                        <p><b>Email:</b> {{student.email}}</p>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="col-sm-9 mail_view">
+                  <div class="inbox-body">
+                    <video id="video" muted="muted" style="width:100%"></video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+    <script src="{% static 'js/teacher/RTC/RTCMultiConnection.min.js' %}"></script>
+    <script src="{% static 'js/peer/getMediaElement.js' %}"></script>
+    <script src="https://192.168.200.4:9443/socket.io/socket.io.js"></script>
+    <script src="{% static 'js/peer/getScreenId.js' %}"></script>
+    <!--<script src="{% static 'js/teacher/RTC/videocall/FileBufferReader.js' %}"></script>-->
+    <script>
+        var lopht = '{{ lopht }}';
+        var ten_dang_nhap = {{username}};
+        var ho_ten = {{fullname}};
+    </script>
+    <script src="{% static 'js/peer/share_connect.js' %}"></script>
+    <script src="{% static 'js/teacher/share.js' %}"></script>
+    <script src="{% static 'js/hls.js' %}"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>-->
+
+	<script>
+		var video = document.getElementById('video');
+		var config = {
+			liveSyncDurationCount: 1
+		};
+		var hls = new Hls(config);
+                var path = 'https://192.168.200.1/hls/' + {{username}} + '.m3u8';
+		hls.loadSource(path);
+		hls.attachMedia(video);
+		hls.on(Hls.Events.MANIFEST_PARSED,function() {
+		  video.play();
+		});
+	</script>    
+{% endblock javascripts %}

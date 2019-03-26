@@ -1,0 +1,24 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="teacher.models.ChiTietLop.objects" />
+          <option value="teacher.models.GiaoVienMon.objects" />
+          <option value="teacher.models.Mon.objects" />
+          <option value="teacher.models.CauHoiDa.objects" />
+          <option value="teacher.models.CauHoi.objects" />
+          <option value="teacher.models.ChiTietCauHoiDa.objects" />
+          <option value="teacher.models.DapAn.objects" />
+          <option value="teacher.models.Lop.objects" />
+          <option value="teacher.models.ChiTietDe.objects" />
+          <option value="teacher.models.De.objects" />
+          <option value="teacher.models.DiemSo.objects" />
+          <option value="teacher.models.Nhom.objects" />
+          <option value="teacher.models.ChiTietNhom.objects" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>

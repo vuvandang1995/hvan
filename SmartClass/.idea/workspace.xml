@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10b7ced1-1e14-44bf-b03b-048079796b2c" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teacher/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="836" column="33" selection-start-line="834" selection-start-column="16" selection-end-line="836" selection-end-column="33" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#1628#1955#0" />
+                <element signature="e#1993#4589#0" />
+                <element signature="e#4647#5326#0" />
+                <element signature="e#7758#9587#0" />
+                <element signature="e#9626#11225#0" />
+                <element signature="e#11269#13368#0" />
+                <element signature="e#13413#15546#0" />
+                <element signature="e#15752#21469#0" />
+                <element signature="e#21610#23630#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/question_excel.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="316">
+              <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SmartClass/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="514">
+              <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/student/templates/student/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-5548" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/student/templates/student/base_2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1084">
+              <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1722">
+              <caret line="242" column="12" lean-forward="true" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_question_excel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2603">
+              <caret line="137" column="45" selection-start-line="125" selection-start-column="36" selection-end-line="137" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>mon</find>
+      <find>Mon</find>
+      <find>dang</find>
+      <find>Đính kèm</find>
+      <find>Điền từ vào chỗ trống</find>
+      <find>alert</find>
+      <find>static</find>
+      <find>media</find>
+      <find>print</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>File đính kèm</replace>
+      <replace>Điền từ</replace>
+      <replace>media</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/teacher/static/js/teacher/manage_question.js" />
+        <option value="$PROJECT_DIR$/teacher/static/js/teacher/question_create.js" />
+        <option value="$PROJECT_DIR$/teacher/models.py" />
+        <option value="$PROJECT_DIR$/student/templates/student/share.html" />
+        <option value="$PROJECT_DIR$/student/templates/student/base_2.html" />
+        <option value="$PROJECT_DIR$/student/views.py" />
+        <option value="$PROJECT_DIR$/teacher/urls.py" />
+        <option value="$PROJECT_DIR$/teacher/static/js/teacher/de_manual.js" />
+        <option value="$PROJECT_DIR$/teacher/static/js/teacher/de_auto.js" />
+        <option value="$PROJECT_DIR$/teacher/static/js/teacher/manage_exam.js" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_exam.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_exam_manual.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_exam_auto.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_class.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_question.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_question_create.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/profile.html" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/share.html" />
+        <option value="$PROJECT_DIR$/adminsc/templates/adminsc/base.html" />
+        <option value="$PROJECT_DIR$/adminsc/templates/adminsc/manage_student.html" />
+        <option value="$PROJECT_DIR$/adminsc/templates/adminsc/manage_class.html" />
+        <option value="$PROJECT_DIR$/adminsc/templates/adminsc/manage_teacher.html" />
+        <option value="$PROJECT_DIR$/teacher/static/js/adminsc/manage_student.js" />
+        <option value="$PROJECT_DIR$/teacher/static/js/adminsc/manage_class.js" />
+        <option value="$PROJECT_DIR$/teacher/static/js/adminsc/manage_teacher.js" />
+        <option value="$PROJECT_DIR$/adminsc/views.py" />
+        <option value="$PROJECT_DIR$/teacher/views.py" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/manage_question_excel.html" />
+        <option value="$PROJECT_DIR$/teacher/static/js/teacher/question_excel.js" />
+        <option value="$PROJECT_DIR$/SmartClass/settings.py" />
+        <option value="$PROJECT_DIR$/teacher/templates/teacher/base.html" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="SmartClass" type="b2602c69:ProjectViewProjectNode" />
+              <item name="SmartClass" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="teacher" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Working\SmartClass\teacher\static\js" />
+      <recent name="F:\Working\SmartClass\teacher\static\images" />
+      <recent name="F:\Working\SmartClass\teacher\static\image" />
+      <recent name="F:\Working\SmartClass\teacher\static\js\teacher" />
+      <recent name="F:\Working\SmartClass\teacher\templates\teacher" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10b7ced1-1e14-44bf-b03b-048079796b2c" name="Default Changelist" comment="" />
+      <created>1552968731816</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1552968731816</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.27410617" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19915701" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.32936078" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.js" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/manage_question.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="68" column="17" selection-start-line="68" selection-start-column="17" selection-end-line="68" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#22050#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/excel/jszip.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/xlsx.full.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/question_create.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4050">
+          <caret line="225" column="47" lean-forward="true" selection-start-line="225" selection-start-column="16" selection-end-line="225" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/templates/student/share.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="57" column="55" lean-forward="true" selection-start-line="57" selection-start-column="55" selection-end-line="57" selection-end-column="55" />
+          <folding>
+            <element signature="n#style#0;n#video#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartClass/urls.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1199">
+          <caret line="431" column="27" selection-start-line="431" selection-start-column="27" selection-end-line="431" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#1655#3055#0" />
+            <element signature="e#3086#3543#0" />
+            <element signature="e#3572#4632#0" />
+            <element signature="e#4673#5660#0" />
+            <element signature="e#5692#7038#0" />
+            <element signature="e#7081#9177#0" />
+            <element signature="e#9207#9467#0" />
+            <element signature="e#9493#9937#0" />
+            <element signature="e#9969#23589#0" />
+            <element signature="e#10306#22609#0" />
+            <element signature="e#23624#33029#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/hls.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="17" column="57" lean-forward="true" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/de_manual.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2126">
+          <caret line="311" column="25" lean-forward="true" selection-start-line="311" selection-start-column="25" selection-end-line="311" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/de_auto.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="196" column="38" selection-start-line="196" selection-start-column="38" selection-end-line="196" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+            <element signature="e#0#23557#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/manage_exam.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_exam.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_exam_manual.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_exam_auto.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+          <folding>
+            <element signature="n#div#2;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_point.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_question.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="50" lean-forward="true" selection-start-line="2" selection-start-column="50" selection-end-line="2" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_question_create.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/share.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="33" lean-forward="true" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/sweetalert2.all.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/images/img1.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/image/teacher.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/image/student.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/image/placeholder.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/image/huong1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/image/class.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/image/avatar.PNG">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="53" column="14" lean-forward="true" selection-start-line="53" selection-start-column="14" selection-end-line="53" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_class.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5403">
+          <caret line="11" column="37" lean-forward="true" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminsc/templates/adminsc/manage_class.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3363">
+          <caret line="177" column="6" lean-forward="true" selection-start-line="177" selection-start-column="6" selection-end-line="177" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/adminsc/manage_class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3401">
+          <caret line="179" column="17" selection-start-line="179" selection-start-column="17" selection-end-line="179" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/adminsc/manage_teacher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5415">
+          <caret line="285" column="19" selection-start-line="285" selection-start-column="19" selection-end-line="285" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4180">
+          <caret line="220" column="51" selection-start-line="220" selection-start-column="51" selection-end-line="220" selection-end-column="51" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminsc/templates/adminsc/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3287">
+          <caret line="173" selection-start-line="173" selection-end-line="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminsc/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="477" selection-start-line="477" selection-end-line="477" />
+          <folding>
+            <element signature="e#0#64#0" expanded="true" />
+            <element signature="e#1271#1525#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminsc/templates/adminsc/manage_student.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="443">
+          <caret line="142" column="34" selection-start-line="142" selection-start-column="34" selection-end-line="142" selection-end-column="34" />
+          <folding>
+            <element signature="e#6068#6115#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/adminsc/manage_student.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="238" column="6" selection-start-line="236" selection-start-column="4" selection-end-line="238" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/adminsc/templates/adminsc/manage_teacher.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="134" column="65" lean-forward="true" selection-start-line="134" selection-start-column="65" selection-end-line="134" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/manage_question_excel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2603">
+          <caret line="137" column="45" selection-start-line="125" selection-start-column="36" selection-end-line="137" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/templates/student/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5548" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/student/templates/student/base_2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1084">
+          <caret line="27" column="23" selection-start-line="27" selection-start-column="23" selection-end-line="27" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/templates/teacher/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1722">
+          <caret line="242" column="12" lean-forward="true" selection-start-line="242" selection-start-column="12" selection-end-line="242" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/static/js/teacher/question_excel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="26" column="49" selection-start-line="26" selection-start-column="49" selection-end-line="26" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teacher/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="836" column="33" selection-start-line="834" selection-start-column="16" selection-end-line="836" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1628#1955#0" />
+            <element signature="e#1993#4589#0" />
+            <element signature="e#4647#5326#0" />
+            <element signature="e#7758#9587#0" />
+            <element signature="e#9626#11225#0" />
+            <element signature="e#11269#13368#0" />
+            <element signature="e#13413#15546#0" />
+            <element signature="e#15752#21469#0" />
+            <element signature="e#21610#23630#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SmartClass/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

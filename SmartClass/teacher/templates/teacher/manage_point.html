@@ -1,0 +1,89 @@
+{% extends "teacher/base.html" %}
+{% load staticfiles %}
+{% block title %}Danh sách điểm lớp {{lop_ht}} {% endblock %}
+{% block stylesheets %}
+    {{ block.super }}
+    <link href="{% static 'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'math/katex.css' %}" />
+    <link rel="stylesheet" href="{% static 'math/monokai-sublime.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'math/quill/quill.snow.css' %}" />
+
+ {% endblock stylesheets %}
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+                <h2>Danh sách điểm lớp {{lop_ht}}  </h2>
+                <input type="hidden" value="{{lop_ht}}" id="lop_ht">
+                <i class="fa fa-question" style="float:right;"></i>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+              <div class="">
+                <table class="table table-striped jambo_table bulk_action" id="list_student" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Họ tên</th>
+                        <th>Điểm</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% csrf_token %}
+<div class="modal" id="point" role="dialog">
+  <div  class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="point_title">Thông tin điểm</h4>
+        </div>
+        <div class="modal-body" id="point_data">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-info" id="in" onclick="PrintElem()"><i class="fa fa-print"></i> In</button>
+            <button class="btn btn-primary" id="cham_diem" ><i class="fa fa-edit"></i> Chấm điểm</button>
+            <button class="btn btn-success" id="luu_diem" ><i class="fa fa-save"></i> Lưu điểm</button>
+            <button class="btn btn-warning" id="huy" ><i class="fa fa-close"></i> Hủy</button>
+           <button type="button" class="btn btn-default" id="close" data-dismiss="modal">Đóng</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block javascripts %}
+    {{ block.super }}
+    <!--<script src="{% static 'js/jquery.easy-autocomplete.js' %}"></script>-->
+    <!--<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>-->
+    <script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+      <script src="{% static 'vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js' %}"></script>
+      <script src="{% static 'vendors/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
+      <script src="{% static 'vendors/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+      <script src="{% static 'vendors/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <!--<script src="/static/vendors/jszip/dist/jszip.min.js"></script>-->
+  <!--<script src="/static/vendors/pdfmake/build/pdfmake.min.js"></script>-->
+  <!--<script src="/static/vendors/pdfmake/build/vfs_fonts.js"></script>-->
+    <!--<script src="{% static 'js/xlsx.full.min.js' %}"></script>-->
+    <script src="{% static 'math/katex.min.js' %}"></script>
+    <script src="{% static 'math/highlight.min.js' %}" ></script>
+    <script src="{% static 'math/quill/quill.min.js' %}"></script>
+    <script src="{% static 'js/teacher/manage_point.js' %}"></script>
+{% endblock javascripts %}

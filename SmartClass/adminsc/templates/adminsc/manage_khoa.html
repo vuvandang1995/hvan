@@ -1,0 +1,145 @@
+{% extends "adminsc/base.html" %}
+{% load staticfiles %}
+{% block stylesheets %}
+    {{ block.super }}
+    <link href="{% static 'vendors/datatables.net-bs/css/dataTables.bootstrap.min.css' %}" rel="stylesheet">
+    <!--<link href="{% static 'css/easy-autocomplete.css' %}" rel="stylesheet">-->
+    <!--<link href="{% static 'css/easy-autocomplete.min.css' %}" rel="stylesheet">-->
+    <!--<link href="{% static 'css/easy-autocomplete.themes.css' %}" rel="stylesheet">-->
+    <!--<link href="{% static 'css/easy-autocomplete.themes.min.css' %}" rel="stylesheet">-->
+{% endblock stylesheets %}
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+                <h2>Danh sách lớp  </h2>
+
+                <button class="btn btn-round btn-primary"  style="float:right;" data-toggle="modal" data-target="#new_khoa" data-title="new">
+                    <i class="fa fa-plus"></i> Tạo mới khoa
+                </button>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table bulk_action" id="list_khoa" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Khóa</th>
+                        <th>Mô tả</th>
+                          <th>Tùy chọn</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="modal" id="detail_student" role="dialog">
+      <div  class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="detail_student_title"></h4>
+            </div>
+            <div class="modal-body">
+                 <table class="table table-striped jambo_table bulk_action" id="list_student" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                 <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<div class="modal" id="detail_teacher" role="dialog">
+      <div  class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="detail_teacher_title"></h4>
+            </div>
+            <div class="modal-body">
+                 <table class="table table-striped jambo_table bulk_action" id="list_teacher" width="100%">
+                    <thead>
+                      <tr>
+                        <th>Họ tên</th>
+                        <th>Giới tính</th>
+                        <th>Bộ môn</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                 <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+<div class="modal" id="new_khoa" role="dialog">
+      <div  class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title" id="change_khoa_title"></h4>
+            </div>
+            <div class="modal-body">
+                {% csrf_token %}
+                <input type="hidden" name="kieu">
+                <input type="hidden" name="id">
+                 <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                  <input type="text" class="form-control has-feedback-left" name="khoa" required placeholder="Tên khoa">
+                  <span class="fa fa-university form-control-feedback left" aria-hidden="true"></span>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12 form-group has-feedback">
+                    <textarea class="form-control has-feedback-left" name="mo_ta" required placeholder="Mô tả" rows="5"></textarea>
+                    <span class="fa fa-edit form-control-feedback left" aria-hidden="true"></span>
+                </div>
+                 <div class="clearfix"></div>
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-primary" id="save_new_khoa">Cập nhật</button>
+               <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock content %}
+{% block javascripts %}
+    {{ block.super }}
+    <!--<script src="{% static 'js/jquery.easy-autocomplete.js' %}"></script>-->
+    <!--<script src="{% static 'js/jquery.easy-autocomplete.min.js' %}"></script>-->
+    <script src="{% static 'vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'vendors/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/adminsc/manage_khoa.js' %}"></script>
+{% endblock javascripts %}

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      {% load static %}
+      {% block meta %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% endblock meta %}
+
+      <title>Smart class | {% block title %}{% endblock %}</title>
+
+      {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="{% static '/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+        <!-- NProgress -->
+        <!--<link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">-->
+        <!-- bootstrap-daterangepicker -->
+        <!--<link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">-->
+        <!-- iCheck -->
+        <!--<link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">-->
+        <!-- bootstrap-progressbar -->
+        <!--<link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">-->
+        <!-- JQVMap -->
+        <!--<link href="{% static 'vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet"/>-->
+      {% endblock stylesheets %}
+      <!-- Custom Theme Style -->
+      <link href="/static/build/css/custom.css" rel="stylesheet">
+    {% endblock head %}
+  </head>
+
+  <body class="{% block body_class %}nav-md {% endblock body_class %}">
+    {% block body %}
+      <div class="container body">
+        <div class="main_container">
+
+          {% block sidebar %}
+            <div class="col-md-3 left_col {% block sidebar_class %} {% endblock sidebar_class %}">
+              <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                  <a href="{% url 'adminsc:home' %}" class="site_title"><i class="fa fa-spinner"></i> <span>Smart class!</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                  <div class="profile_pic">
+                    <img src="/static/images/img.jpg" alt="..." class="img-circle profile_img">
+                  </div>
+                  <div class="profile_info">
+                    <span>Xin chào</span>
+                    <h2>{{ user.username }}</h2>
+                  </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                  <div class="menu_section">
+                    <ul class="nav side-menu">
+                      <li>
+                        <a href="{% url 'adminsc:manage_khoa' %}"><i class="fa fa-bank"></i> Quản lý khoa </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'adminsc:manage_nien_khoa' %}"><i class="fa fa-calendar"></i> Quản lý khóa </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'adminsc:manage_mon' %}"><i class="fa fa-book"></i> Quản lý môn </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'adminsc:manage_class' %}"><i class="fa fa-home"></i> Quản lý lớp </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'adminsc:manage_student' %}"><i class="fa fa-users"></i> Quản lý học sinh </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'adminsc:manage_teacher' %}"><i class="fa fa-user-secret"></i> Quản lý giáo viên </a>
+                      </li>
+                      <li>
+                        <a href="{% url 'adminsc:profile' %}"><i class="fa fa-info-circle"></i> Thông tin cá nhân </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- /sidebar menu -->
+
+              </div>
+
+            </div>
+          {% endblock sidebar %}
+
+          {% block top_navigation %}
+            <div class="top_nav">
+              <div class="nav_menu">
+                <nav>
+                  <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                  </div>
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                      <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="/static/images/img.jpg" alt="">{{ user.username }}
+                        <span class=" fa fa-angle-down"></span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a href="{% url 'adminsc:profile' %}"> Thông tin cá nhân</a></li>
+                        <li><a href="{% url 'adminsc:logout' %}"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                      </ul>
+                    </li>
+
+                    <!--<li role="presentation" class="dropdown">-->
+                      <!--<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">-->
+                        <!--<i class="fa fa-envelope-o"></i>-->
+                        <!--<span class="badge bg-green">6</span>-->
+                      <!--</a>-->
+                      <!--<ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">-->
+                        <!--<li>-->
+                          <!--<a>-->
+                            <!--<span class="image"><img src="/static/images/img.jpg" alt="Profile Image" /></span>-->
+                            <!--<span>-->
+                              <!--<span>{{ user.username }}</span>-->
+                              <!--<span class="time">3 mins ago</span>-->
+                            <!--</span>-->
+                            <!--<span class="message">-->
+                              <!--Film festivals used to be do-or-die moments for movie makers. They were where...-->
+                            <!--</span>-->
+                          <!--</a>-->
+                        <!--</li>-->
+                        <!--<li>-->
+                          <!--<div class="text-center">-->
+                            <!--<a>-->
+                              <!--<strong>See All Alerts</strong>-->
+                              <!--<i class="fa fa-angle-right"></i>-->
+                            <!--</a>-->
+                          <!--</div>-->
+                        <!--</li>-->
+                      <!--</ul>-->
+                    <!--</li>-->
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          {% endblock top_navigation %}
+
+          {% block content %}
+            <!-- {{ content }} -->
+          {% endblock content %}
+
+          {% block footer %}
+            <footer>
+              <div class="pull-right">
+                Smart class
+              </div>
+              <div class="clearfix"></div>
+            </footer>
+          {% endblock footer %}
+        </div>
+      </div>
+
+      {% block javascripts %}
+        <!-- jQuery -->
+        <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+        <!-- Bootstrap -->
+        <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+
+        <script src="{% static 'js/sweetalert2.all.min.js' %}"></script>
+      {% endblock %}
+      <!-- Custom Theme Scripts -->
+      <script src="{% static 'build/js/custom.js' %}"></script>
+    {% endblock body %}
+  </body>
+</html>

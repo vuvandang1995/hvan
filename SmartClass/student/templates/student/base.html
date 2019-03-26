@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      {% load static %}
+      {% block meta %}
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      {% endblock meta %}
+
+      <title>QA smartclass! | {% block title %}{% endblock %}</title>
+
+      {% block stylesheets %}
+        <!-- Bootstrap -->
+        <link href="{% static 'vendors/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="{% static '/vendors/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+        <!-- NProgress -->
+        <!--<link href="{% static 'vendors/nprogress/nprogress.css' %}" rel="stylesheet">-->
+        <!--&lt;!&ndash; bootstrap-daterangepicker &ndash;&gt;-->
+        <!--<link href="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">-->
+        <!--&lt;!&ndash; iCheck &ndash;&gt;-->
+        <!--<link href="{% static 'vendors/iCheck/skins/flat/green.css' %}" rel="stylesheet">-->
+        <!--&lt;!&ndash; bootstrap-progressbar &ndash;&gt;-->
+        <!--<link href="{% static 'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css' %}" rel="stylesheet">-->
+        <!--&lt;!&ndash; JQVMap &ndash;&gt;-->
+        <!--<link href="{% static 'vendors/jqvmap/dist/jqvmap.min.css' %}" rel="stylesheet"/>-->
+      {% endblock stylesheets %}
+      <!-- Custom Theme Style -->
+      <link href="{% static 'css/chat.css' %}" rel="stylesheet">
+      <link href="/static/build/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/my_css.css' %}" />
+    {% endblock head %}
+  </head>
+
+  <body class="{% block body_class %}nav-md {% endblock body_class %}">
+    {% block body %}
+      <div class="container body">
+        <div class="main_container">
+
+          {% block sidebar %}
+            <div class="col-md-3 left_col {% block sidebar_class %} {% endblock sidebar_class %}">
+              <div class="left_col scroll-view">
+                <div class="navbar nav_title" style="border: 0;">
+                  <a href="{% url 'student:home' %}" class="site_title"><i class="fa fa-spinner"></i> <span>Student</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                  <div class="profile_pic">
+                    <img src="/static/images/img.jpg" alt="..." class="img-circle profile_img">
+                  </div>
+                  <div class="profile_info">
+                    <span>Xin chào</span>
+                    <h2>{{user.fullname}}</h2>
+                  </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                  <div class="menu_section">
+                    <ul class="nav side-menu">
+                      <li><a><i class="fa fa-book"></i> Các môn học <span class="fa fa-chevron-down"></span></a>
+                          <ul class="nav child_menu">
+                            {% for m in mon %}
+                            <li><a href="{% url 'student:mon' m.mon_id.id %}">{{m.mon_id.ten}} - {{m.mon_id.lop}}</a></li>
+                            {% endfor %}
+                          </ul>
+                      </li>
+                      <li><a href="{% url 'student:score' %}"><i class="fa fa-edit"></i> Điểm </a>
+                      </li>
+                      <li><a href="{% url 'student:profile' %}"><i class="fa fa-info-circle"></i> Thông tin cá nhân </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- /sidebar menu -->
+
+              </div>
+
+            </div>
+          {% endblock sidebar %}
+
+          {% block top_navigation %}
+            <div class="top_nav">
+              <div class="nav_menu">
+                <nav>
+                  <div class="nav toggle">
+                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                  </div>
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <li class="">
+                      <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <img src="/static/images/img.jpg" alt="">{{user.username}}
+                        <span class=" fa fa-angle-down"></span>
+                      </a>
+                      <ul class="dropdown-menu dropdown-usermenu pull-right">
+                        <li><a href="{% url 'student:profile' %}"> Thông tin cá nhân</a></li>
+                        <li><a href="{% url 'student:logout' %}"><i class="fa fa-sign-out pull-right"></i> Đăng xuất</a></li>
+                      </ul>
+                    </li>
+
+                    <li role="presentation" class="dropdown" id="noti" style="display:none;">
+                      <a class="dropdown-toggle info-number noti_fy" data-toggle="dropdown" onclick="notiFunction()">
+                        <i class="fa fa-bell"></i>
+                        <div class="notify chat_noti" style="display:none;">
+                          <span class="heartbit"></span> 
+                          <span class="point"></span> 
+                        </div>
+                      </a>
+                      <ul id="menu1" class="dropdown-menu list-unstyled msg_list noti_noti" role="menu">
+                      
+                        
+                      </ul>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          {% endblock top_navigation %}
+
+          {% block content %}
+            <!-- {{ content }} -->
+          {% endblock content %}
+
+          <audio id="reciver_phone">
+            <source src="{% static 'sound/reciver.mp3' %}" type="audio/mpeg">
+          </audio>
+        
+          <audio id="waiting">
+            <source src="{% static 'sound/phone-tone-1.mp3' %}" type="audio/mpeg">
+          </audio>
+        
+          <audio id="ring">
+            <source src="{% static 'sound/phone_2.wav' %}" type="audio/mpeg">
+          </audio>
+
+          <button style="display: none;" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" id="ringring"></button>
+
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" ></h4>
+              </div>
+              <div class="modal-body">
+                  <video hidden id="localStream" width="200" controls></video>
+                    <br /><br />
+                  <video hidden id="remoteStream" width="200" controls></video>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="ok">OK</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
+              </div>
+              </div>
+            </div>
+          </div>
+
+
+          {% block footer %}
+            <footer>
+              <div class="pull-right">
+                QA smartclass
+              </div>
+              <div class="clearfix"></div>
+            </footer>
+          {% endblock footer %}
+          
+        </div>
+      </div>
+
+      {% block javascripts %}
+        <!-- jQuery -->
+        <script src="{% static 'vendors/jquery/dist/jquery.min.js' %}"></script>
+        <!-- Bootstrap -->
+        <script src="{% static 'vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+        <!-- FastClick -->
+        <!--<script src="{% static 'vendors/fastclick/lib/fastclick.js' %}"></script>-->
+        <!--&lt;!&ndash; NProgress &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/nprogress/nprogress.js' %}"></script>-->
+        <!--&lt;!&ndash; bootstrap-progressbar &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>-->
+        <!--&lt;!&ndash; iCheck &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/iCheck/icheck.min.js' %}"></script>-->
+        <!--&lt;!&ndash; bootstrap-daterangepicker &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/moment/min/moment.min.js' %}"></script>-->
+        <!--<script src="{% static 'vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>-->
+        <!--&lt;!&ndash; bootstrap-wysiwyg &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js' %}"></script>-->
+        <!--<script src="{% static 'vendors/jquery.hotkeys/jquery.hotkeys.js' %}"></script>-->
+        <!--<script src="{% static 'vendors/google-code-prettify/src/prettify.js' %}"></script>-->
+        <!--&lt;!&ndash; jQuery Tags Input &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/jquery.tagsinput/src/jquery.tagsinput.js' %}"></script>-->
+        <!--&lt;!&ndash; Switchery &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/switchery/dist/switchery.min.js' %}"></script>-->
+        <!--&lt;!&ndash; Select2 &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/select2/dist/js/select2.full.min.js' %}"></script>-->
+        <!--&lt;!&ndash; Parsley &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/parsleyjs/dist/parsley.min.js' %}"></script>-->
+        <!--&lt;!&ndash; Autosize &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/autosize/dist/autosize.min.js' %}"></script>-->
+        <!--&lt;!&ndash; jQuery autocomplete &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js' %}"></script>-->
+        <!--&lt;!&ndash; starrr &ndash;&gt;-->
+        <!--<script src="{% static 'vendors/starrr/dist/starrr.js' %}"></script>-->
+      <script src="{% static 'build/js/custom.js' %}"></script>
+      <script src="{% static 'js/teacher/chat_student.js' %}"></script>
+      <!-- <script src="{% static 'js/teacher/peerjs/jquery.js' %}"></script> -->
+      {% comment %} <script src="{% static 'js/teacher/peerjs/peer.js' %}"></script> {% endcomment %}
+      <script src="{% static 'js/teacher/wsk/reconnecting-websocket.min.js' %}"></script>
+
+
+      {% endblock %}
+      <!-- Custom Theme Scripts -->
+    {% endblock body %}
+
+
+    <script>
+      var noti_noti = {{noti_noti}};
+      function notiFunction() {
+        if ($('body .num_noti').length){
+            var token = $("input[name=csrfmiddlewaretoken]").val();
+            $.ajax({
+                type:'POST',
+                url:location.href,
+                data: {'noti_noti': 0, 'csrfmiddlewaretoken':token},
+                success: function(){
+                    $('body .num_noti').remove();
+                }
+            });
+        }else if($('body .chat_noti').css('display') == 'block'){
+          var token = $("input[name=csrfmiddlewaretoken]").val();
+          $.ajax({
+              type:'POST',
+              url:location.href,
+              data: {'noti_noti': 0, 'csrfmiddlewaretoken':token},
+              success: function(){
+                try {
+                  $('body .chat_noti').hide();
+                }catch(err) {
+                }
+              }
+          });
+        }
+      }
+
+      if (noti_noti != 0){
+          $('body .num_noti').remove();
+          var noti1 = '<span class="badge bg-green num_noti">'+noti_noti+'</span>';
+          $('body .noti_fy').append(noti1);
+      }
+      var userName = {{ username }};
+      
+      /*var userSocket = new ReconnectingWebSocket(
+          'ws://' + window.location.host +
+          '/ws/' + userName + '/');*/
+
+      var userSocket = new WebSocket(
+          'wss://' + window.location.host +
+          '/ws/' + userName + '/');
+
+      function escapeHtml(text) {
+        return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+      
+
+
+      function formatAMPM(date) {
+        var hours = date.getHours();
+        var minutes = date.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; // the hour '0' should be '12'
+        minutes = minutes < 10 ? '0'+minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm + ' ' +date.getDate()+'/'+(date.getMonth()+1)+'/'+date.getFullYear();
+        return strTime;
+      }
+      
+
+      var key = '';
+      var me = {};
+      me.avatar = "https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/User_man_male_profile_account_person_people.png";
+      var you = {};
+      you.avatar = "https://cdn2.iconfinder.com/data/icons/rcons-users-color/32/support_man-512.png";
+          //-- No use time. It is a javaScript effect.
+          function insertChat(who, text, time){
+              if (time === undefined){
+                  time = 0;
+              }
+              var control = "";
+              var date = time;
+              if (who == userName){
+                control = '<li style="padding-top: 15px;margin-left: 5em;width:75%;">' +
+                              '<div class="msj-rta macro" style="background-color: #BFE9F9;">' +
+                                  '<div class="text text-r">' +
+                                      '<p style="color: #444950;word-break: break-all;">'+text+'</p>' +
+                                      '<p><small style="color: #444950;">'+date+'</small></p>' +
+                                  '</div></div></li>';
+              }else{
+                control = '<li style="width:75%">' +
+                    '<h4 style="margin-bottom: -3px;margin-left: 10%;font-size: 12px;">'+who+'</h4>'+
+                    '<div class="avatar" style="padding:5px 0px 0px 10px !important"><img class="img-circle" style="width:90%;" src="https://cdn2.iconfinder.com/data/icons/perfect-flat-icons-2/512/User_man_male_profile_account_person_people.png" /></div>'+
+                    '<div class="msj-rta macro">' +
+                        '<div class="text text-r">' +
+                            '<p style="color: #444950;word-break: break-all;">'+text+'</p>' +
+                            '<p><small style="color: #444950;">'+date+'</small></p>' +
+                        '</div></div>' +
+                    '</li>';
+              }
+              setTimeout(
+                  function(){
+                      $(".frame > ul").append(control).scrollTop($(".frame > ul").prop('scrollHeight'));
+                  }, time);
+          }
+
+      
+
+    </script>
+  </body>
+</html>
